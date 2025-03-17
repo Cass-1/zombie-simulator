@@ -1,11 +1,6 @@
 public class Cone : Accessory
 {
-    public Cone() : base(25)
+    public Cone() : base(25, "C")
     {
-    }
-
-    public override string GetEntityType()
-    {
-        return "C";
     }
 }

@@ -3,9 +3,11 @@ public abstract class Accessory : Entity
 
     private bool _isDead;
     private int _health;
-    public Accessory(int health)
+    private string _entityType;
+    public Accessory(int health, string entityType)
     {
         this._health = health;
+        this._entityType = entityType;
         this._isDead = false;
     }
 
@@ -41,5 +43,10 @@ public abstract class Accessory : Entity
     public override int GetHealth()
     {
         return this._health >= 0 ? this._health : 0;
+    }
+
+    public override string GetEntityType()
+    {
+        return this._entityType;
     }
 }
