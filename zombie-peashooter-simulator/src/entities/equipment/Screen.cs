@@ -1,6 +1,11 @@
-public class Screen : Equipment
+public class Screen : Accessory
 {
-    public Screen() : base(75)
+    public Screen() : base(25)
     {
+    }
+
+    public override string GetEntityType()
+    {
+        return "S";
     }
 }

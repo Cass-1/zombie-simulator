@@ -1,6 +1,11 @@
-public class Bucket : Equipment
+public class Bucket : Accessory
 {
-    public Bucket() : base(50)
+    public Bucket() : base(100)
     {
+    }
+
+    public override string GetEntityType()
+    {
+        return "B";
     }
 }

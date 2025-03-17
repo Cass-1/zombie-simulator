@@ -1,4 +1,4 @@
-public class EquipmentFactory : EntityFactory
+public class AccessoryFactory : EntityFactory
 {
     public override Entity CreateEntity(string entity)
     {

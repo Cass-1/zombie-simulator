@@ -1,22 +1,12 @@
-public class Equipment : Entity
+public abstract class Accessory : Entity
 {
 
     private bool _isDead;
     private int _health;
-    private int _id;
-    public Equipment(int health)
+    public Accessory(int health)
     {
         this._health = health;
         this._isDead = false;
-    }
-    public override void Add(Entity entity)
-    {
-        // not implemented for Equipment
-    }
-
-    public override void Remove(Entity entity)
-    {
-        // not implemented for Equipment
     }
 
     public override int TakeDamage(int damage)
@@ -34,8 +24,18 @@ public class Equipment : Entity
     {
         this._isDead = true;
     }
-    public override bool isDead()
+    public override bool IsDead()
     {
         return this._isDead;
+    }
+
+    public override void Add(Entity entity)
+    {
+        // doesn't implement this method
+    }
+
+    public override void Remove(Entity entity)
+    {
+        // doesn't implement this method
     }
 }
