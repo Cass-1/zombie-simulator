@@ -9,4 +9,5 @@ public abstract class Entity
     public abstract string GetEntityType();
     public abstract void Add(Entity entity);
     public abstract void Remove(Entity entity);
+    public abstract int GetHealth();
 }

@@ -38,4 +38,8 @@ public abstract class Accessory : Entity
     {
         // doesn't implement this method
     }
+    public override int GetHealth()
+    {
+        return this._health >= 0 ? this._health : 0;
+    }
 }

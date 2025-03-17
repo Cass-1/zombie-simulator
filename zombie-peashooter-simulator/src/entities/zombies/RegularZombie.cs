@@ -73,5 +73,9 @@ public class RegularZombie : Entity
         this._accessory = null;
     }
 
-
+    public override int GetHealth()
+    {
+        int accessoryHealth = this._accessory == null ? 0 : this._accessory.GetHealth();
+        return this._health >= 0 ? this._health + accessoryHealth : 0;
+    }
 }
