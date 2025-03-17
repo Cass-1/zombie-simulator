@@ -20,11 +20,23 @@ while (true)
     }
     else if (input.Contains('2'))
     {
+        Console.WriteLine("Enter damage the peashooter should do: ");
+        string? damage = Console.ReadLine();
+        int peaDamage = 25;
+        try
+        {
+            peaDamage = Int32.Parse(damage ?? "25");
+            Console.WriteLine($"You have set the pea damage to {peaDamage}");
+        }
+        catch
+        {
+            Console.WriteLine("You entered an invalid number, defaulting to 25");
+        }
         while (zombies.Count > 0)
         {
             Console.WriteLine(GetGraphicOfZombieList(zombies));
             Entity zombie = zombies.First();
-            zombie.TakeDamage(25);
+            zombie.TakeDamage(peaDamage);
             if (zombie.IsDead())
             {
                 zombies.Remove(zombie);
