@@ -7,7 +7,7 @@ List<Entity> zombies = new();
 
 while (true)
 {
-    Console.WriteLine("1. Create Zombies\n2. Demo Game Play\n3.Quit");
+    Console.WriteLine("1. Create Zombies\n2. Demo Game Play\n3. Quit");
     string? input = Console.ReadLine();
 
     if (input == null)
