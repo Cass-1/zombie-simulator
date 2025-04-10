@@ -18,5 +18,6 @@ public enum DecorationType
 {
     CONE,
     BUCKET,
-    SCREEN
+    SCREEN,
+    NONE
 }

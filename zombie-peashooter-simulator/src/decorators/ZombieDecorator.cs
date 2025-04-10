@@ -36,7 +36,7 @@ public abstract class ZombieDecorator : IZombie
 
     public void Notify()
     {
-        this._observers.ForEach(x => x.Update());
+        this._observers.ForEach(x => x.Update(this));
     }
 
     public void RemoveAccessory()
