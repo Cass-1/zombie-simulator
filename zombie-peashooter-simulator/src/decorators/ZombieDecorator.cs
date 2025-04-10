@@ -12,12 +12,12 @@ public abstract class ZombieDecorator : IZombie
 
     public void Attach(IObserver observer)
     {
-        this._observers.Add(observer);
+        _observers.Add(observer);
     }
 
     public void Detach(IObserver observer)
     {
-        this._observers.Where(x => x != observer);
+        _observers.Remove(observer);
     }
 
     public void Die()
@@ -36,7 +36,7 @@ public abstract class ZombieDecorator : IZombie
 
     public void Notify()
     {
-        this._observers.ForEach(x => x.Update(this));
+        _observers.ForEach(x => x.Update(this));
     }
 
     public void RemoveAccessory()

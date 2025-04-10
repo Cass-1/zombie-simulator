@@ -1,6 +1,24 @@
 public class RegularZombie : IZombie
 {
     private int _health;
+    protected List<IObserver> _observers = new();
+    public void Attach(IObserver observer)
+    {
+        _observers.Add(observer);
+    }
+
+    public void Detach(IObserver observer)
+    {
+        _observers.Remove(observer);
+    }
+    public void Die()
+    {
+        _observers.ForEach(x => x.Update(this));
+    }
+    public void Notify()
+    {
+        _observers.ForEach(x => x.Update(this));
+    }
     public bool HasMetallicAccessory()
     {
         return false;
@@ -21,8 +39,8 @@ public class RegularZombie : IZombie
         _health -= value;
     }
 
-    DecorationType IZombie.GetType()
+    public DecorationType GetZombieType()
     {
-        return DecorationType.REGULAR;
+        return DecorationType.NONE;
     }
 }
