@@ -1,81 +1,28 @@
-
-public class RegularZombie : Entity
+public class RegularZombie : IZombie
 {
-    private bool _isDead;
     private int _health;
-
-    private Entity? _accessory;
-    public RegularZombie(Entity? accessory = null)
+    public bool HasMetallicAccessory()
     {
-        this._health = 50;
-        this._accessory = accessory;
-        this._isDead = false;
+        return false;
     }
 
-    public override int TakeDamage(int damage)
+    public bool IsAlive()
     {
-        if (this._accessory != null)
-        {
-            int leftoverDamage = this._accessory.TakeDamage(damage);
-            if (this._accessory.IsDead())
-            {
-                this._accessory = null;
-                if (leftoverDamage > 0)
-                {
-                    this.TakeDamage(leftoverDamage);
-                }
-            }
-        }
-        else
-        {
-            this._health -= damage;
-            if (this._health <= 0)
-            {
-                this.Die();
-                return this._health * -1;
-            }
-        }
-        return 0;
+        return _health > 0;
     }
 
-    public override void Die()
+    public void RemoveAccessory()
     {
-        this._isDead = true;
+        // do nothing
     }
 
-    public override bool IsDead()
+    public void TakeDamage(int value, DamageType damageType)
     {
-        return this._isDead;
+        _health -= value;
     }
 
-    public override string GetEntityType()
+    DecorationType IZombie.GetType()
     {
-        if (this._accessory != null)
-        {
-            return this._accessory.GetEntityType();
-        }
-        else
-        {
-            return "R";
-        }
-    }
-
-    public override void Add(Entity accessory)
-    {
-        if (this._accessory == null)
-        {
-            this._accessory = accessory;
-        }
-    }
-
-    public override void Remove(Entity accessory)
-    {
-        this._accessory = null;
-    }
-
-    public override int GetHealth()
-    {
-        int accessoryHealth = this._accessory == null ? 0 : this._accessory.GetHealth();
-        return this._health >= 0 ? this._health + accessoryHealth : 0;
+        return DecorationType.REGULAR;
     }
 }
