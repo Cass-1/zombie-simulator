@@ -4,15 +4,15 @@ public class GameEventManager
     {
         if (collisionTypes == CollisionTypes.PEASHOOTER)
         {
-
+            throw new NotImplementedException();
         }
         else if (collisionTypes == CollisionTypes.WATERMELON)
         {
-
+            throw new NotImplementedException();
         }
         else if (collisionTypes == CollisionTypes.MAGNET_SHROOM)
         {
-
+            throw new NotImplementedException();
         }
         else
         {
