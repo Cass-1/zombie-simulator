@@ -1,10 +1,11 @@
-public interface IZombie
+public interface IZombie : IObservable
 {
     public void TakeDamage(int value, DamageType damageType);
     public DecorationType GetZombieType();
     public void RemoveAccessory();
     public bool IsAlive();
     public bool HasMetallicAccessory();
+    public void Die();
 }
 
 public enum DamageType
