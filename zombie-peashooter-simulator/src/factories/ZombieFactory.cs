@@ -5,15 +5,15 @@ public static class ZombieFactory
         RegularZombie zombie = new();
         if (type == ZombieType.CONE)
         {
-            return new ConeDecorator(zombie, 75);
+            return new ConeDecorator(zombie);
         }
         else if (type == ZombieType.BUCKET)
         {
-            return new BucketDecorator(zombie, 150);
+            return new BucketDecorator(zombie);
         }
         else if (type == ZombieType.SCREEN)
         {
-            return new ScreenDecorator(zombie, 120);
+            return new ScreenDecorator(zombie);
         }
         else if (type == ZombieType.REGULAR)
         {

@@ -7,15 +7,27 @@ public class GameObjectManager : IObserver
 
     public void Update(IObservable observable)
     {
-        if (observable is IZombie)
+        if (observable is RegularZombie)
         {
             _ = _enemies.Remove(observable as IZombie);
+            observable.Detach(this);
+        }
+        else if (observable is ZombieDecorator)
+        {
+            observable.Detach(this);
+            int index = _enemies.IndexOf(observable as IZombie);
+            IZombie zombie = (observable as ZombieDecorator).WrappedObject();
+            _enemies[index] = zombie;
+            zombie.Attach(this);
         }
     }
 
     public void AddZombie(ZombieType type)
     {
-        _enemies.Add(ZombieFactory.CreateDecorator(type));
+        var zombie = ZombieFactory.CreateDecorator(type);
+        _enemies.Add(zombie);
+        zombie.Attach(this);
+
     }
     public IZombie GetNextZombie()
     {

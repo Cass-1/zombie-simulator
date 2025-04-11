@@ -3,11 +3,17 @@ public abstract class ZombieDecorator : IZombie
     protected int _health;
     protected IZombie _zombie;
     protected List<IObserver> _observers;
+    protected ZombieType _zombieType;
     public ZombieDecorator(IZombie zombie, int health)
     {
         _zombie = zombie;
         _health = health;
         _observers = new();
+    }
+
+    public IZombie WrappedObject()
+    {
+        return _zombie;
     }
 
     public void Attach(IObserver observer)
@@ -25,7 +31,10 @@ public abstract class ZombieDecorator : IZombie
         Notify();
     }
 
-    public abstract ZombieType GetZombieType();
+    public ZombieType GetZombieType()
+    {
+        return _zombieType;
+    }
 
     public abstract bool HasMetallicAccessory();
 
@@ -36,12 +45,16 @@ public abstract class ZombieDecorator : IZombie
 
     public void Notify()
     {
-        _observers.ForEach(x => x.Update(this));
+        for (int i = 0; i < _observers.Count; i++)
+        {
+            _observers.ElementAt(i).Update(this);
+        }
     }
 
     public void RemoveAccessory()
     {
         _health = 0;
+        Die();
     }
 
     public abstract void TakeDamage(int value);

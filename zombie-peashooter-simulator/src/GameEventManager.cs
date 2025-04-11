@@ -8,7 +8,7 @@ public class GameEventManager
     {
         _objectManager = objectManager;
     }
-    public void simulateCollisionDetection(CollisionType collisionTypes)
+    public void SimulateCollisionDetection(CollisionType collisionTypes)
     {
         if (collisionTypes == CollisionType.PEASHOOTER)
         {

@@ -1,6 +1,6 @@
 public class RegularZombie : IZombie
 {
-    private int _health;
+    private int _health = 50;
     protected List<IObserver> _observers = new();
     public void Attach(IObserver observer)
     {
@@ -13,11 +13,14 @@ public class RegularZombie : IZombie
     }
     public void Die()
     {
-        _observers.ForEach(x => x.Update(this));
+        Notify();
     }
     public void Notify()
     {
-        _observers.ForEach(x => x.Update(this));
+        for (int i = 0; i < _observers.Count; i++)
+        {
+            _observers.ElementAt(i).Update(this);
+        }
     }
     public bool HasMetallicAccessory()
     {
@@ -36,7 +39,15 @@ public class RegularZombie : IZombie
 
     public void TakeDamage(int value)
     {
-        _health -= value;
+        if (_health > 0)
+        {
+            _health -= value;
+        }
+        if (_health <= 0)
+        {
+            Die();
+        }
+
     }
 
     public ZombieType GetZombieType()

@@ -1,7 +1,8 @@
 public class ScreenDecorator : ZombieDecorator
 {
-    public ScreenDecorator(IZombie zombie, int health) : base(zombie, health)
+    public ScreenDecorator(IZombie zombie) : base(zombie, 25)
     {
+        _zombieType = ZombieType.SCREEN;
     }
     public override bool HasMetallicAccessory()
     {
@@ -11,27 +12,15 @@ public class ScreenDecorator : ZombieDecorator
     public override void TakeDamage(int value)
     {
         _health -= value;
-        if (_health < 0)
+        if (_health <= 0)
         {
             _zombie.TakeDamage(-1 * _health);
-            _health = 0;
+            Die();
         }
     }
 
     public override void TakeDamageFromAbove(int value)
     {
         _zombie.TakeDamage(value);
-    }
-
-    public override ZombieType GetZombieType()
-    {
-        if (_health > 0)
-        {
-            return ZombieType.CONE;
-        }
-        else
-        {
-            return _zombie.GetZombieType();
-        }
     }
 }

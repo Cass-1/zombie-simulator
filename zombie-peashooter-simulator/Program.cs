@@ -24,10 +24,10 @@ while (true)
     {
         while (objectManager.HasZombies)
         {
+            Console.Clear();
             Console.WriteLine(objectManager.GetZombieGraphics());
             CollisionType collisionType = ChooseAttack();
-            eventManager.simulateCollisionDetection(collisionType);
-            Console.WriteLine(objectManager.GetZombieGraphics());
+            eventManager.SimulateCollisionDetection(collisionType);
         }
     }
     else if (input.Contains('3'))
@@ -40,6 +40,7 @@ static CollisionType ChooseAttack()
 {
     while (true)
     {
+        Console.Clear();
         Console.WriteLine("1. Peashooter\n2. Watermelon\n3. Magnet");
         string? input = Console.ReadLine();
 

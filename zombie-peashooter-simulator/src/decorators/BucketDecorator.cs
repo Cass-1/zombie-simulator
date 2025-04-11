@@ -1,7 +1,8 @@
 public class BucketDecorator : ZombieDecorator
 {
-    public BucketDecorator(IZombie zombie, int health) : base(zombie, health)
+    public BucketDecorator(IZombie zombie) : base(zombie, 125)
     {
+        _zombieType = ZombieType.BUCKET;
     }
     public override bool HasMetallicAccessory()
     {
@@ -11,27 +12,15 @@ public class BucketDecorator : ZombieDecorator
     public override void TakeDamage(int value)
     {
         _health -= value;
-        if (_health < 0)
+        if (_health <= 0)
         {
             _zombie.TakeDamage(-1 * _health);
-            _health = 0;
+            Die();
         }
     }
 
     public override void TakeDamageFromAbove(int value)
     {
         TakeDamage(value);
-    }
-
-    public override ZombieType GetZombieType()
-    {
-        if (_health > 0)
-        {
-            return ZombieType.BUCKET;
-        }
-        else
-        {
-            return _zombie.GetZombieType();
-        }
     }
 }
