@@ -24,7 +24,6 @@ while (true)
     {
         while (objectManager.HasZombies)
         {
-            Console.Clear();
             Console.WriteLine(objectManager.GetZombieGraphics());
             CollisionType collisionType = ChooseAttack();
             eventManager.SimulateCollisionDetection(collisionType);
@@ -40,7 +39,6 @@ static CollisionType ChooseAttack()
 {
     while (true)
     {
-        Console.Clear();
         Console.WriteLine("1. Peashooter\n2. Watermelon\n3. Magnet");
         string? input = Console.ReadLine();
 
