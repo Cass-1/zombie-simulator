@@ -7,6 +7,7 @@ public interface IZombie : IObservable
     public bool HasMetallicAccessory();
     public void Die();
     public void TakeDamageFromAbove(int value);
+    public int GetHealth();
 }
 
 public enum DamageType

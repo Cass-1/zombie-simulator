@@ -42,37 +42,31 @@ public class GameObjectManager : IObserver
         return _enemies.First();
     }
 
-    public IEnumerable<ZombieType> GetZombieTypes()
+    public List<string> GetZombieTypesAndHealth()
     {
-        return _enemies.Select(x => x.GetZombieType());
+        List<string> typesAndHealth = new();
+        foreach (var zombie in _enemies)
+        {
+            if (zombie is ZombieDecorator)
+            {
+                (int accessoryHealth, int wrappedHealth) = (zombie as ZombieDecorator).GetDetailedHealth();
+                typesAndHealth.Add($"({zombie.GetZombieType()},({accessoryHealth},{wrappedHealth}))");
+            }
+            else
+            {
+                typesAndHealth.Add($"({zombie.GetZombieType()},{zombie.GetHealth()})");
+            }
+        }
+        return typesAndHealth;
     }
 
     public string GetZombieGraphics()
     {
         string zombieArray = "[";
-        IEnumerable<ZombieType> types = GetZombieTypes();
-        foreach (var type in types)
+        List<string> info = GetZombieTypesAndHealth();
+        foreach (var i in info)
         {
-            if (type == ZombieType.REGULAR)
-            {
-                zombieArray += "R,";
-            }
-            else if (type == ZombieType.CONE)
-            {
-                zombieArray += "C,";
-            }
-            else if (type == ZombieType.SCREEN)
-            {
-                zombieArray += "S,";
-            }
-            else if (type == ZombieType.BUCKET)
-            {
-                zombieArray += "B,";
-            }
-            else
-            {
-                throw new ConstraintException();
-            }
+            zombieArray += $"{i},";
         }
         zombieArray += "]";
         return zombieArray;

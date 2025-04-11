@@ -2,6 +2,8 @@ public class RegularZombie : IZombie
 {
     private int _health = 50;
     protected List<IObserver> _observers = new();
+
+    public int GetHealth() => _health;
     public void Attach(IObserver observer)
     {
         _observers.Add(observer);

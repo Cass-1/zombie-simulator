@@ -5,6 +5,8 @@ public abstract class ZombieDecorator : IZombie
     protected List<IObserver> _observers;
     protected ZombieType _zombieType;
     public bool HasZombie;
+    public int GetHealth() => _health;
+    public (int, int) GetDetailedHealth() => (_health, _zombie.GetHealth());
     public ZombieDecorator(IZombie zombie, int health)
     {
         _zombie = zombie;
