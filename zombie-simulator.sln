@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zombie-peashooter-simulator", "zombie-peashooter-simulator.csproj", "{DE36A2A6-EBBA-73C0-2FAA-1EEE8152DABE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zombie-peashooter-simulator", "zombie-peashooter-simulator\zombie-peashooter-simulator.csproj", "{6F32FE01-6666-933A-AEA7-2C6570384E31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,15 +10,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DE36A2A6-EBBA-73C0-2FAA-1EEE8152DABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE36A2A6-EBBA-73C0-2FAA-1EEE8152DABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE36A2A6-EBBA-73C0-2FAA-1EEE8152DABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE36A2A6-EBBA-73C0-2FAA-1EEE8152DABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F32FE01-6666-933A-AEA7-2C6570384E31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F32FE01-6666-933A-AEA7-2C6570384E31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F32FE01-6666-933A-AEA7-2C6570384E31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F32FE01-6666-933A-AEA7-2C6570384E31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E9C9B68C-6134-484E-B5F2-100D84CFBBD8}
+		SolutionGuid = {727608FE-D723-43BD-9E3B-C2A686E3C9F9}
 	EndGlobalSection
 EndGlobal
