@@ -8,21 +8,25 @@ public class ConeDecorator : ZombieDecorator
         return false;
     }
 
-    public override void TakeDamage(int value, DamageType damageType)
+    public override void TakeDamage(int value)
     {
         _health -= value;
         if (_health < 0)
         {
-            _zombie.TakeDamage(-1 * _health, damageType);
+            _zombie.TakeDamage(-1 * _health);
             _health = 0;
         }
     }
+    public override void TakeDamageFromAbove(int value)
+    {
+        TakeDamage(value);
+    }
 
-    public override DecorationType GetZombieType()
+    public override ZombieType GetZombieType()
     {
         if (_health > 0)
         {
-            return DecorationType.BUCKET;
+            return ZombieType.BUCKET;
         }
         else
         {

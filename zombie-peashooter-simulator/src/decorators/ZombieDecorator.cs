@@ -25,7 +25,7 @@ public abstract class ZombieDecorator : IZombie
         Notify();
     }
 
-    public abstract DecorationType GetZombieType();
+    public abstract ZombieType GetZombieType();
 
     public abstract bool HasMetallicAccessory();
 
@@ -44,6 +44,7 @@ public abstract class ZombieDecorator : IZombie
         _health = 0;
     }
 
-    public abstract void TakeDamage(int value, DamageType damageType);
+    public abstract void TakeDamage(int value);
+    public abstract void TakeDamageFromAbove(int value);
 
 }

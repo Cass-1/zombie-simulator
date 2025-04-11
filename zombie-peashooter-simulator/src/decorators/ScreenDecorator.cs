@@ -8,28 +8,26 @@ public class ScreenDecorator : ZombieDecorator
         return true;
     }
 
-    public override void TakeDamage(int value, DamageType damageType)
+    public override void TakeDamage(int value)
     {
-        if (damageType == DamageType.LOB)
+        _health -= value;
+        if (_health < 0)
         {
-            _zombie.TakeDamage(value, damageType);
-        }
-        else
-        {
-            _health -= value;
-            if (_health < 0)
-            {
-                _zombie.TakeDamage(-1 * _health, damageType);
-                _health = 0;
-            }
+            _zombie.TakeDamage(-1 * _health);
+            _health = 0;
         }
     }
 
-    public override DecorationType GetZombieType()
+    public override void TakeDamageFromAbove(int value)
+    {
+        _zombie.TakeDamage(value);
+    }
+
+    public override ZombieType GetZombieType()
     {
         if (_health > 0)
         {
-            return DecorationType.CONE;
+            return ZombieType.CONE;
         }
         else
         {

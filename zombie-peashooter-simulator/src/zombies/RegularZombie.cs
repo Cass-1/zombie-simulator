@@ -34,13 +34,18 @@ public class RegularZombie : IZombie
         // do nothing
     }
 
-    public void TakeDamage(int value, DamageType damageType)
+    public void TakeDamage(int value)
     {
         _health -= value;
     }
 
-    public DecorationType GetZombieType()
+    public ZombieType GetZombieType()
     {
-        return DecorationType.NONE;
+        return ZombieType.NONE;
+    }
+
+    public void TakeDamageFromAbove(int value)
+    {
+        this.TakeDamage(value);
     }
 }
