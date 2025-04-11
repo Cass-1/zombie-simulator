@@ -3,5 +3,5 @@ public enum ZombieType
     CONE,
     BUCKET,
     SCREEN,
-    NONE
+    REGULAR
 }

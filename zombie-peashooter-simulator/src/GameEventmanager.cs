@@ -1,18 +1,26 @@
+using System.Data;
+
 public class GameEventManager
 {
-    public void simulateCollisionDetection(CollisionTypes collisionTypes)
+    private GameObjectManager _objectManager;
+
+    public GameEventManager(GameObjectManager objectManager)
     {
-        if (collisionTypes == CollisionTypes.PEASHOOTER)
+        _objectManager = objectManager;
+    }
+    public void simulateCollisionDetection(CollisionType collisionTypes)
+    {
+        if (collisionTypes == CollisionType.PEASHOOTER)
         {
-            throw new NotImplementedException();
+            DoDamage(25, _objectManager.GetNextZombie());
         }
-        else if (collisionTypes == CollisionTypes.WATERMELON)
+        else if (collisionTypes == CollisionType.WATERMELON)
         {
-            throw new NotImplementedException();
+            DoDamageFromAbove(40, _objectManager.GetNextZombie());
         }
-        else if (collisionTypes == CollisionTypes.MAGNET_SHROOM)
+        else if (collisionTypes == CollisionType.MAGNET_SHROOM)
         {
-            throw new NotImplementedException();
+            ApplyMagnetForce(_objectManager.GetNextZombie());
         }
         else
         {
@@ -20,9 +28,13 @@ public class GameEventManager
         }
     }
 
-    public void DoDamage(int value, DamageType damageType, IZombie e)
+    public void DoDamage(int value, IZombie e)
     {
-        e.TakeDamage(value, damageType);
+        e.TakeDamage(value);
+    }
+    public void DoDamageFromAbove(int value, IZombie e)
+    {
+        e.TakeDamageFromAbove(value);
     }
     public void ApplyMagnetForce(IZombie e)
     {

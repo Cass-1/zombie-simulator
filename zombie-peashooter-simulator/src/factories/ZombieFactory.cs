@@ -15,7 +15,7 @@ public static class ZombieFactory
         {
             return new ScreenDecorator(zombie, 120);
         }
-        else if (type == ZombieType.NONE)
+        else if (type == ZombieType.REGULAR)
         {
             return zombie;
         }

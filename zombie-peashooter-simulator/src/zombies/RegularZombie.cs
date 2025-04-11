@@ -41,7 +41,7 @@ public class RegularZombie : IZombie
 
     public ZombieType GetZombieType()
     {
-        return ZombieType.NONE;
+        return ZombieType.REGULAR;
     }
 
     public void TakeDamageFromAbove(int value)
