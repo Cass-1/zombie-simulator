@@ -22,5 +22,10 @@ public class ScreenDecorator : ZombieDecorator
     public override void TakeDamageFromAbove(int value)
     {
         _zombie.TakeDamage(value);
+        if (!_zombie.IsAlive())
+        {
+            this.HasZombie = false;
+            Die();
+        }
     }
 }

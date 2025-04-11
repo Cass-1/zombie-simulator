@@ -16,9 +16,17 @@ public class GameObjectManager : IObserver
         {
             observable.Detach(this);
             int index = _enemies.IndexOf(observable as IZombie);
-            IZombie zombie = (observable as ZombieDecorator).WrappedObject();
-            _enemies[index] = zombie;
-            zombie.Attach(this);
+            ZombieDecorator zombieDecorator = observable as ZombieDecorator;
+            if (zombieDecorator.HasZombie)
+            {
+                IZombie zombie = (zombieDecorator).WrappedObject();
+                _enemies[index] = zombie;
+                zombie.Attach(this);
+            }
+            else
+            {
+                _enemies.Remove(zombieDecorator);
+            }
         }
     }
 

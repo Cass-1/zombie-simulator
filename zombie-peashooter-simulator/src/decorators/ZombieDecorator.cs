@@ -4,11 +4,13 @@ public abstract class ZombieDecorator : IZombie
     protected IZombie _zombie;
     protected List<IObserver> _observers;
     protected ZombieType _zombieType;
+    public bool HasZombie;
     public ZombieDecorator(IZombie zombie, int health)
     {
         _zombie = zombie;
         _health = health;
         _observers = new();
+        this.HasZombie = true;
     }
 
     public IZombie WrappedObject()
